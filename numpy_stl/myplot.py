@@ -2,25 +2,25 @@ from matplotlib import pyplot as plt
 from mpl_toolkits import mplot3d
 
 
-def plot_verticles(vertices, isosurf = False):
-    
+def plot_verticles(vertices, isosurf = False, filename = None):
+    # Create a new plot
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-
     x = [v[0] for v in vertices]
     y = [v[1] for v in vertices]
-    z = [v[2] for v in vertices]
-    
+    z = [v[2] for v in vertices]    
     if isosurf:
         ax.plot_trisurf(x, y, z, linewidth=0.2, antialiased=True)
     else:
-        ax.scatter(x, y, z, c='r', marker='o')
-    
+        ax.scatter(x, y, z, c='r', marker='o')    
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
-
-    plt.show()
+    # Show or save the plot
+    if filename is None:
+        plt.show()
+    else:
+        plt.savefig(filename)
 
 
 def plot_mesh(your_mesh, filename = None):
@@ -32,7 +32,7 @@ def plot_mesh(your_mesh, filename = None):
     # Auto scale to the mesh size
     scale = your_mesh.points.flatten()
     axes.auto_scale_xyz(scale, scale, scale)
-    # Show the plot to the screen
+    # Show or save the plot
     if filename is None:
         plt.show()
     else:
