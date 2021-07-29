@@ -1,12 +1,32 @@
 import pymesh
-import numpy as np
 from myplot import plot_vf
+import imageio
+import os
 
-sponge = pymesh.meshio.load_mesh('pymesh_examples/pymesh_example_04_3.stl')
+sponge = pymesh.meshio.load_mesh('/pymesh_examples/pymesh_example_04_3.stl')
 
-vertices = sponge.vertices
-faces = sponge.faces
+filenames = []
+images = []
 
-colors = np.array([int(f*8/len(faces)) for f in range(len(faces))])
+# rendering
+for i in range(30):
+    vertices = sponge.vertices
+    faces = sponge.faces
+    filename = '/pymesh_examples/pymesh_example_05_3_'+str(i)+'.png'
+    print(filename)
+    filenames.append(filename)    
+    plot_vf(vertices, faces, cam_x=i, cam_y=i, filename = filename)
+    images.append(imageio.imread(filename))
 
-plot_vf(vertices, faces, colors, filename = 'pymesh_example_04_3_0.png')
+# back rendering
+i = 29
+while i>0:
+    images.append(imageio.imread(filenames[i]))
+    i-=1
+
+# save gif
+imageio.mimsave('/pymesh_examples/pymesh_example_05_3.gif', images)
+
+# remove images
+for filename in filenames:
+    os.remove(filename)
