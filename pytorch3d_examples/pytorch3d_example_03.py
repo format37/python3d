@@ -42,9 +42,23 @@ vertices = torch.tensor(
 )
 
 # faces
-hull = spatial.ConvexHull(vertices_base)
+#hull = spatial.ConvexHull(vertices_base)
+faces_data = [
+    [3, 2, 1],
+    [3, 1, 0],
+    [0, 1, 5],#
+    [5, 4, 0],
+    [7, 3, 0],
+    [0, 4, 7],#
+    [1, 2, 6],#
+    [6, 5, 1],
+    [2, 3, 6],#
+    [3, 7, 6],#
+    [4, 5, 6],#
+    [6, 7, 4]
+ ]
 faces = torch.tensor(
-   hull.simplices,
+   faces_data,
    device=device,
    dtype=torch.int64,
 )

@@ -18,7 +18,7 @@ for i in range(30):
     plot_vf(vertices, faces, cam_x=i, cam_y=i, filename = filename)
     images.append(imageio.imread(filename))
 
-# back rendering
+# reverse rendering
 i = 29
 while i>0:
     images.append(imageio.imread(filenames[i]))
