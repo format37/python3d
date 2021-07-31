@@ -10,6 +10,8 @@ import datetime
 
 batch_size = 10
 
+time_start = datetime.datetime.now()
+
 def log(message):
    print(datetime.datetime.now().strftime('%Y.%m.%d %H:%M:%S'), message)
 
@@ -118,3 +120,6 @@ if len(voxels):
 log('save')
 IO().save_mesh(mesh, 'pytorch3d_example_03.obj')
 log('end')
+
+time_end = datetime.datetime.now()
+print('spent', (time_end - time_start).seconds, 'seconds')

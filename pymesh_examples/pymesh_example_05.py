@@ -1,5 +1,5 @@
 import pymesh
-from myplot import plot_vf
+from myplot_vf import plot_vf
 import imageio
 import os
 

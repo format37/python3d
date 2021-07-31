@@ -1,7 +1,10 @@
-import pymesh
 import numpy as np
+import datetime
+import pymesh
 import math
 import sys
+
+time_start = datetime.datetime.now()
 
 depth = int(sys.argv[1])
 
@@ -17,12 +20,12 @@ def menger_sponge(depth):
    z = [-0.1,1.1]
    side = 1
    for d in range(1, depth+1):
-       side /= 3
-       for x in range(1,3**d,3):
-           for y in range(1,3**d,3):
-              
+      side /= 3
+      for x in range(1,3**d,3):
+         for y in range(1,3**d,3):
+               print(datetime.datetime.now(), d, x, y, '/', depth, ':', 3**d)
                box_a = pymesh.generate_box_mesh([side*x,side*y,z[0]], [side*x+side,side*y+side,z[1]])
-              
+            
                box_b = mesh_rotate(mesh = box_a, x = 1, y = 0, z = 0, angle = 90)
                box_b = mesh_trans(mesh = box_b, x = 0, y = 1, z = 0)
 
@@ -38,3 +41,6 @@ def menger_sponge(depth):
 mesh_fractal = menger_sponge(depth)
 
 pymesh.save_mesh("/pymesh_examples/pymesh_example_04_"+str(depth)+".stl", mesh_fractal, ascii=False)
+
+time_end = datetime.datetime.now()
+print('spent', (time_end - time_start).seconds, 'seconds')
