@@ -30,7 +30,7 @@ print('reverse rendering..')
 i = gif_half_size-1
 while i>0:
     print(datetime.datetime.now(), filenames[i])
-    images.append(imageio.imread(filenames[i]))
+    imageio_images.append(imageio.imread(filenames[i]))
     i-=1
 
 # save gif
