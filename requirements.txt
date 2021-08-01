@@ -1,0 +1,5 @@
+numpy-stl
+torch
+pytorch3d
+solidpython
+
