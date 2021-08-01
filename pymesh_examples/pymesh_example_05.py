@@ -1,6 +1,7 @@
-import pymesh
 from myplot_vf import plot_vf
+import datetime
 import imageio
+import pymesh
 import os
 
 gif_half_size = 30
