@@ -3,10 +3,12 @@ from myplot_vf import plot_vf
 import imageio
 import os
 
+gif_half_size = 30
+
 sponge = pymesh.meshio.load_mesh('/pymesh_examples/pymesh_example_04_3.stl')
 
 filenames = []
-images = []
+imageio_images = []
 
 # rendering
 for i in range(30):
@@ -16,16 +18,22 @@ for i in range(30):
     print(filename)
     filenames.append(filename)    
     plot_vf(vertices, faces, cam_x=i, cam_y=i, filename = filename)
-    images.append(imageio.imread(filename))
 
-# reverse rendering
+print('forward rendering..')
+for i in range(gif_half_size):
+    print(datetime.datetime.now(), filenames[i])
+    imageio_images.append(imageio.imread(filenames[i]))
+    i-=1
+
+print('reverse rendering..')
 i = 29
 while i>0:
+    print(datetime.datetime.now(), filenames[i])
     images.append(imageio.imread(filenames[i]))
     i-=1
 
 # save gif
-imageio.mimsave('/pymesh_examples/pymesh_example_05_3.gif', images)
+imageio.mimsave('/pymesh_examples/pymesh_example_05_3.gif', imageio_images)
 
 # remove images
 for filename in filenames:
