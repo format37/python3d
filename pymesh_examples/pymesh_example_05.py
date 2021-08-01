@@ -11,7 +11,7 @@ filenames = []
 imageio_images = []
 
 # rendering
-for i in range(30):
+for i in range(gif_half_size):
     vertices = sponge.vertices
     faces = sponge.faces
     filename = '/pymesh_examples/pymesh_example_05_3_'+str(i)+'.png'
@@ -26,7 +26,7 @@ for i in range(gif_half_size):
     i-=1
 
 print('reverse rendering..')
-i = 29
+i = gif_half_size-1
 while i>0:
     print(datetime.datetime.now(), filenames[i])
     images.append(imageio.imread(filenames[i]))
