@@ -1,5 +1,7 @@
+numpy
 numpy-stl
+scipy
 torch
-pytorch3d
+git+https://github.com/facebookresearch/pytorch3d.git
 solidpython
 
