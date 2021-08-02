@@ -2,6 +2,7 @@ numpy
 numpy-stl
 scipy
 torch
-git+https://github.com/facebookresearch/pytorch3d.git
 solidpython
+matplotlib
+imageio
 
