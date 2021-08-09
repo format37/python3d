@@ -4,7 +4,7 @@ import imageio
 import os
 import datetime
 
-gif_half_size = 30
+gif_half_size = 16
 
 sponge = pymesh.meshio.load_mesh('/pymesh_examples/pymesh_example_04_3.stl')
 
