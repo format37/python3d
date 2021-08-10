@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import imageio
 import os
 
-gif_half_size = 30
+gif_half_size = 27
 
 if torch.cuda.is_available():
    device = torch.device("cuda:0")
